@@ -2,10 +2,10 @@
 
 // alert('Hello');
 
-// let number = 5
-// const leftBorderWidth = 1;
-// const COLOR_RED = '#F00';
-// const _apiBase = 'https://gateway.marvel.com:443/v1/public/';
+let number = 5
+const leftBorderWidth = 1;
+const COLOR_RED = '#F00';
+const _apiBase = 'https://gateway.marvel.com:443/v1/public/';
 
 // let userName = "John";
 // let userNumber = 25;
