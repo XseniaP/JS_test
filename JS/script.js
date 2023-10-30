@@ -10,8 +10,7 @@ let personalMovieDB = {
     privat: false
 };
 
-let lastMovie = prompt("Name one of the last movies you've watched?",'');
-let movieRank = +prompt("How would you rate that movie?",'');
+let lastMovie = prompt("Name one of the last movies you've watched?",''), movieRank = +prompt("How would you rate that movie?",'');
 personalMovieDB.movies[lastMovie] = movieRank;
 
 lastMovie = prompt("Name one of the last movies you've watched?",'');
