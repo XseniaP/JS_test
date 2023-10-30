@@ -1,13 +1,34 @@
 "use strict";
 
+let numberOfFilms = +prompt("How many movies have you watched so far?",'');
+
+let personalMovieDB = {
+    count: numberOfFilms,
+    movies: {},
+    actors: {},
+    genres: [],
+    privat: false
+};
+
+let lastMovie = prompt("Name one of the last movies you've watched?",'');
+let movieRank = +prompt("How would you rate that movie?",'');
+personalMovieDB.movies[lastMovie] = movieRank;
+
+lastMovie = prompt("Name one of the last movies you've watched?",'');
+movieRank = +prompt("How would you rate that movie?",'');
+personalMovieDB.movies[lastMovie] = movieRank;
+
+console.log(personalMovieDB);
+
+
 // alert('Hello');
 
 //works
-let number = 5
+// let number = 5
 
-const leftBorderWidth = 1;
-const COLOR_RED = '#F00';
-const _apiBase = 'https://gateway.marvel.com:443/v1/public/';
+// const leftBorderWidth = 1;
+// const COLOR_RED = '#F00';
+// const _apiBase = 'https://gateway.marvel.com:443/v1/public/';
 
 // let userName = "John";
 // let userNumber = 25;
