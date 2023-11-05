@@ -1,5 +1,126 @@
 "use strict";
 
+let numberOfFilms;
+
+function start() {
+    // numberOfFilms = +prompt("How many movies have you watched so far?",'');
+
+    while (numberOfFilms == '' || numberOfFilms == null || isNaN(numberOfFilms)) {
+        numberOfFilms = +prompt("How many movies have you watched so far?",'');
+    }
+}
+
+start();
+
+let personalMovieDB = {
+    count: numberOfFilms,
+    movies: {},
+    actors: {},
+    genres: [],
+    privat: false
+};
+
+function rememberMyFilms() {
+    let lastMovie, movieRank;
+    for (let i=0; i < 2; i++){
+        lastMovie = prompt("Name one of the last movies you've watched?",'');
+        movieRank = +prompt("How would you rate that movie?",'');
+        if (lastMovie != '' && lastMovie != null && movieRank != '' && movieRank != null && lastMovie.length < 50){
+            personalMovieDB.movies[lastMovie] = movieRank;
+        } else {
+            console.log('error');
+            i--; //return 1 cycle back
+        }
+    }
+}
+
+rememberMyFilms();
+
+function detectPersonalLevel(){
+    if (numberOfFilms < 10){
+        alert('you watched a few movies');
+    } else if ((numberOfFilms>=10) && (numberOfFilms < 30)){
+        alert('you watched a lot of movies');
+    } else if (numberOfFilms>=30) {
+        alert('you are movie-lover');
+    } else {
+        alert('Error');
+    }
+}
+
+detectPersonalLevel();
+
+function showMyDB() {
+    if (personalMovieDB.privat === false) {
+        console.log(personalMovieDB);
+    }
+}
+
+showMyDB();
+
+function writeYourGenres() {
+    let genre;
+    for (let i=1; i<4; i++) {
+        genre ='';
+        while (genre === '' || genre == null){
+            genre = prompt(`what is your favourite genre of films #${i}?`);
+        }
+        // personalMovieDB.genres.push(genre);
+        personalMovieDB.genres[i-1] = genre;
+    }
+}
+
+writeYourGenres();
+
+
+// console.dir(Number);
+// let str = 'scoop';
+// let upStr = str.toUpperCase();
+// console.log(upStr.slice(-3,));
+
+// const num = 12.2;
+// console.log(Math.round(num));
+
+// const test = "12.2px";
+// console.log(parseInt(test));
+
+// const test = "12.2px";
+// console.log(parseFloat(test));
+// let str2 = 'map';
+// console.log(str.concat(str2));
+// function getMathResult(base, num) {
+//     let result = `${base}`;
+//     if (typeof(num)==='number' && (num > 0)) {
+//         for (let i = 2; i <= num; i++){
+//             result = result + '---' + base*i;
+//         }
+//     } else {
+//         return base;
+//     }
+//     return result;
+// }
+
+// console.log(getMathResult(3,4));
+// function showFirstMessage(){
+//     console.log('Hello World')
+// }
+//
+// showFirstMessage();
+
+// const logger = function(){
+//     console.log('Hello')
+// };
+//
+// logger();
+
+// const calc = (a,b) => a + b;
+// const calc = (a,b) => { return a + b};
+
+// const calc = (a,b) => {
+//     console.log('1');
+//     return a+b;
+// };
+
 // const lines = 5;
 // let result = '';
 // let space = " ";
@@ -64,42 +185,12 @@
 //     num++;
 // }
 
-let numberOfFilms = +prompt("How many movies have you watched so far?",'');
-if (numberOfFilms < 10){
-    alert('you watched a few movies');
-} else if ((numberOfFilms>=10) && (numberOfFilms < 30)){
-    alert('you watched a lot of movies');
-} else if (numberOfFilms>=30) {
-    alert('you are movie-lover');
-} else {
-    alert('Error');
-}
-
-let personalMovieDB = {
-    count: numberOfFilms,
-    movies: {},
-    actors: {},
-    genres: [],
-    privat: false
-};
 
 
-let lastMovie, movieRank;
-for (let i=0; i < 2; i++){
-    lastMovie = prompt("Name one of the last movies you've watched?",'');
-    movieRank = +prompt("How would you rate that movie?",'');
-    if (lastMovie != '' && lastMovie != null && movieRank != '' && movieRank != null && lastMovie.length < 50){
-        personalMovieDB.movies[lastMovie] = movieRank;
-    } else {
-        console.log('error');
-        i--; //return 1 cycle back
-    }
-}
-console.log(personalMovieDB);
+
+
 
 // console.log(0 || 0 || null);
-
-
 
 // const hamburger = 3;
 // const fries = 3;
