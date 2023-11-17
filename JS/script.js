@@ -1,5 +1,24 @@
 "use strict";
 
+// const soldier = {
+//     health: 400,
+//     armor: 100,
+//     sayHello: function (){
+//         console.log('hello');
+//     }
+// };
+
+// const john = {
+//     health: 100
+// };
+//
+// john.__proto__ = soldier;
+// Object.setPrototypeOf(john, soldier);
+// const john = Object.create(soldier)
+// john.sayHello();
+// console.log(john.armor);
+
+
 // const baseCurrencies = ['USD', 'EUR'];
 // const additionalCurrencies = ['UAH', 'RUB', 'CNY'];
 //
@@ -266,75 +285,72 @@
 // }
 
 // let numberOfFilms;
-//
-// function start() {
-//     // numberOfFilms = +prompt("How many movies have you watched so far?",'');
-//
-//     while (numberOfFilms == '' || numberOfFilms == null || isNaN(numberOfFilms)) {
-//         numberOfFilms = +prompt("How many movies have you watched so far?",'');
-//     }
-// }
-//
+
 // start();
-//
-// let personalMovieDB = {
-//     count: numberOfFilms,
-//     movies: {},
-//     actors: {},
-//     genres: [],
-//     privat: false
-// };
-//
-// function rememberMyFilms() {
-//     let lastMovie, movieRank;
-//     for (let i=0; i < 2; i++){
-//         lastMovie = prompt("Name one of the last movies you've watched?",'').trim();
-//         movieRank = +prompt("How would you rate that movie?",'');
-//         if (lastMovie != '' && lastMovie != null && movieRank != '' && movieRank != null && lastMovie.length < 50){
-//             personalMovieDB.movies[lastMovie] = movieRank;
-//         } else {
-//             console.log('error');
-//             i--; //return 1 cycle back
-//         }
-//     }
-// }
-//
+
+let personalMovieDB = {
+    count: 0,
+    movies: {},
+    actors: {},
+    genres: [],
+    privat: false,
+    start: function() {
+        personalMovieDB.count = +prompt("How many movies have you watched so far?",'');
+
+        while (personalMovieDB.count == '' || personalMovieDB.count == null || isNaN(personalMovieDB.count)) {
+            personalMovieDB.count = +prompt("How many movies have you watched so far?",'');
+        }
+    },
+    rememberMyFilms: function() {
+        let lastMovie, movieRank;
+        for (let i=0; i < 2; i++){
+            lastMovie = prompt("Name one of the last movies you've watched?",'').trim();
+            movieRank = +prompt("How would you rate that movie?",'');
+            if (lastMovie != '' && lastMovie != null && movieRank != '' && movieRank != null && lastMovie.length < 50){
+                personalMovieDB.movies[lastMovie] = movieRank;
+            } else {
+                console.log('error');
+                i--; //return 1 cycle back
+            }
+        }
+    },
+    detectPersonalLevel: function(){
+        if (personalMovieDB.count < 10){
+            alert('you watched a few movies');
+        } else if ((personalMovieDB.count>=10) && (personalMovieDB.count < 30)){
+            alert('you watched a lot of movies');
+        } else if (personalMovieDB.count>=30) {
+            alert('you are movie-lover');
+        } else {
+            alert('Error');
+        }
+    },
+    toggleVisibleMyDB: function(){
+        personalMovieDB.privat = !personalMovieDB.privat;
+    },
+    showMyDB: function () {
+        if (personalMovieDB.privat === false) {
+            console.log(personalMovieDB);
+        }
+    },
+    writeYourGenres: function () {
+        let genre;
+        for (let i=1; i<4; i++) {
+            genre ='';
+            while (genre === '' || genre == null){
+                genre = prompt(`what is your favourite genre of films #${i}?`);
+            }
+            // personalMovieDB.genres.push(genre);
+            personalMovieDB.genres[i-1] = genre;
+        }
+    }
+};
+
+personalMovieDB.start();
+
 // rememberMyFilms();
-//
-// function detectPersonalLevel(){
-//     if (numberOfFilms < 10){
-//         alert('you watched a few movies');
-//     } else if ((numberOfFilms>=10) && (numberOfFilms < 30)){
-//         alert('you watched a lot of movies');
-//     } else if (numberOfFilms>=30) {
-//         alert('you are movie-lover');
-//     } else {
-//         alert('Error');
-//     }
-// }
-//
 // detectPersonalLevel();
-//
-// function showMyDB() {
-//     if (personalMovieDB.privat === false) {
-//         console.log(personalMovieDB);
-//     }
-// }
-//
 // showMyDB();
-//
-// function writeYourGenres() {
-//     let genre;
-//     for (let i=1; i<4; i++) {
-//         genre ='';
-//         while (genre === '' || genre == null){
-//             genre = prompt(`what is your favourite genre of films #${i}?`);
-//         }
-//         // personalMovieDB.genres.push(genre);
-//         personalMovieDB.genres[i-1] = genre;
-//     }
-// }
-//
 // writeYourGenres();
 
 
