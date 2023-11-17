@@ -1,77 +1,465 @@
 "use strict";
 
-let numberOfFilms;
+// const baseCurrencies = ['USD', 'EUR'];
+// const additionalCurrencies = ['UAH', 'RUB', 'CNY'];
+//
+// function availableCurr(arr, missingCurr) {
+//     // console.log(typeof(missingCurr));
+//     if (arr === 'null' || arr === 'undefined' || arr.length === 0) {
+//         console.log('Нет доступных валют');
+//         return ('Нет доступных валют');
+//     }
+//     let intersection = [];
+//     if (typeof(missingCurr)==='string' && missingCurr!='null' && missingCurr!='undefined'){
+//         missingCurr = [missingCurr];
+//     } else if (typeof (missingCurr)==='object') {
+//
+//     } else if (missingCurr!='null' || missingCurr!='undefined'){
+//         missingCurr = [];
+//     }
+//         // console.log(missingCurr);
+//     for (let i of arr){
+//         if (missingCurr.includes(i)){
+//             continue;
+//         } else {
+//             intersection.push(i);
+//         }
+//     }
+//     // console.log(intersection);
+//     // return(intersection);
+//     let line = `Доступные валюты:\n`;
+//     for (let i=0; i<intersection.length;i++){
+//         line += `${intersection[i]}\n`
+//     }
+//     console.log(line);
+//     return(line);
+// }
+//
+// availableCurr([] , ['CNY']);
 
-function start() {
-    // numberOfFilms = +prompt("How many movies have you watched so far?",'');
+// const someString = 'This is some strange string';
 
-    while (numberOfFilms == '' || numberOfFilms == null || isNaN(numberOfFilms)) {
-        numberOfFilms = +prompt("How many movies have you watched so far?",'');
-    }
-}
+// function reverse(str) {
+//     let line =``;
+//     for (let i=str.length-1; i>=0;i--){
+//         line += str[i];
+//     }
+//     console.log(line);
+//     return(line);
+// }
+// reverse(someString);
 
-start();
+// const family = ['Peter', 'Ann', 'Alex', 'Linda'];
+//
+// function showFamily(arr) {
+//     if (arr.length === 0){
+//         console.log('Семья пуста');
+//         return('Семья пуста');
+//     } else {
+//         let list = family.join(' ');
+//         console.log(`Семья состоит из: ${list}`);
+//         return(`Семья состоит из: ${list}`);
+//     }
+//
+// }
+//
+// showFamily(family);
 
-let personalMovieDB = {
-    count: numberOfFilms,
-    movies: {},
-    actors: {},
-    genres: [],
-    privat: false
-};
+// const favoriteCities = ['liSBon', 'ROME', 'miLan', 'Dublin'];
+//
+// function standardizeStrings(arr) {
+//     let line = arr.join('\n').toLowerCase();
+//     console.log(line);
+//     return(line);
+// }
+//
+// standardizeStrings(favoriteCities);
 
-function rememberMyFilms() {
-    let lastMovie, movieRank;
-    for (let i=0; i < 2; i++){
-        lastMovie = prompt("Name one of the last movies you've watched?",'');
-        movieRank = +prompt("How would you rate that movie?",'');
-        if (lastMovie != '' && lastMovie != null && movieRank != '' && movieRank != null && lastMovie.length < 50){
-            personalMovieDB.movies[lastMovie] = movieRank;
-        } else {
-            console.log('error');
-            i--; //return 1 cycle back
-        }
-    }
-}
+// const personalPlanPeter = {
+//     name: "Peter",
+//     age: "29",
+//     skills: {
+//         languages: ['ru', 'eng'],
+//         programmingLangs: {
+//             js: '20%',
+//             php: '10%',
+//             ruby: '30%'
+//         },
+//         exp: '1 month'
+//     }
+// };
+//
+// function showExperience(plan) {
+//     console.log(plan.skills.exp);
+//     return plan.skills.exp;
+// }
+//
+// function showProgrammingLangs(plan) {
+//     let str = '';
+//     let arr1 = Object.keys(plan.skills.programmingLangs);
+//     let arr2 = Object.values(plan.skills.programmingLangs);
+//
+//     for (let i=0; i<arr1.length; i++){
+//         str += `Язык ${arr1[i]} изучен на ${arr2[i]}\n`
+//     }
+//     console.log(str);
+//     return(str);
+// }
+//
+// showProgrammingLangs(personalPlanPeter);
 
-rememberMyFilms();
+// personalPlanPeter.showAgeAndLangs = function(plan){
+//     const arr = plan.skills.languages.slice();
+//     let line = arr.join(' ').toUpperCase();
+//     console.log(`Мне ${plan.age} и я владею языками: ${line}`);
+//     return (`Мне ${plan.age} и я владею языками: ${line}`);
+// }
 
-function detectPersonalLevel(){
-    if (numberOfFilms < 10){
-        alert('you watched a few movies');
-    } else if ((numberOfFilms>=10) && (numberOfFilms < 30)){
-        alert('you watched a lot of movies');
-    } else if (numberOfFilms>=30) {
-        alert('you are movie-lover');
-    } else {
-        alert('Error');
-    }
-}
+// personalPlanPeter.showAgeAndLangs({
+//     name: "Peter",
+//     age: "29",
+//     skills: {
+//         languages: ['ru', 'eng'],
+//         programmingLangs: {
+//             js: '20%',
+//             php: '10%',
+//             ruby: '30%'
+//         },
+//         exp: '1 month'
+//     }});
 
-detectPersonalLevel();
+// const q = {
+//     one: 1,
+//     two: 2
+// };
 
-function showMyDB() {
-    if (personalMovieDB.privat === false) {
-        console.log(personalMovieDB);
-    }
-}
+// const newObj = {...q};
+// console.log(newObj);
 
-showMyDB();
+// function log(a, b, c){
+//     console.log(a);
+//     console.log(b);
+//     console.log(c);
+// }
+//
+// const num = [2, 5, 7];
+//
+// log(...num);
 
-function writeYourGenres() {
-    let genre;
-    for (let i=1; i<4; i++) {
-        genre ='';
-        while (genre === '' || genre == null){
-            genre = prompt(`what is your favourite genre of films #${i}?`);
-        }
-        // personalMovieDB.genres.push(genre);
-        personalMovieDB.genres[i-1] = genre;
-    }
-}
+// const array = ["a", "b"];
+// const newArray = [...array];
 
-writeYourGenres();
 
+// const obj = {
+//     a:5,
+//     b:1
+// };
+
+// const copy = obj;
+// copy.a = 10;
+// console.log(obj);
+
+// function copy(mainObj) {
+//     let objCopy = {};
+//     let key;
+//     for (key in mainObj) {
+//         objCopy[key] = mainObj[key];
+//     }
+//     return objCopy;
+// }
+//
+// const numbers = {
+//     a: 2,
+//     b: 5,
+//     c: {
+//         x: 7,
+//         y: 4
+//     }
+// };
+//
+// const newNumbers = copy(numbers);
+//
+// newNumbers.a = 10;
+//
+// console.log(newNumbers);
+// console.log(numbers);
+
+// const oldArray = ['a', 'b', 'c'];
+// const newArray = oldArray.slice();
+//
+// newArray[1] = 'afabfbfgb';
+// console.log(newArray);
+// console.log(oldArray);
+
+// const video = ['youtube', 'vimeo'],
+//     blogs = ['wordpress', 'livejournal', 'blogger'],
+//     internet = [...video, ...blogs, 'facebook', 'instagram'];
+// console.log(internet);
+
+
+// let arr = [1,2,3,4,5];
+
+// const str = prompt("","");
+// const products = str.split(", ");
+// console.log(products);
+// let line = products.join(';');
+// console.log(line);
+
+// const arr = [2,13,26,8,10];
+// arr.sort(compareNum);
+// console.log(arr);
+//
+// function compareNum(a, b) {
+//     return a - b;
+// }
+
+
+// for (let i = 0; i < arr.length; i++) {
+//     console.log(arr[i]);
+// }
+//
+// for (let value of arr) {
+//     console.log(value);
+// }
+
+// arr.forEach(function (item,i, arr){
+//    console.log(`${i}: ${item} inside of array ${arr}`);
+// });
+
+
+
+// const obj = new Object();
+
+// const options = {
+//     name: 'test',
+//     width: 1024,
+//     height: 1024,
+//     colors: {
+//         border: 'black',
+//         bg: 'red'
+//     },
+//     makeTest: function () {
+//         console.log("Test");
+//     }
+// };
+
+// const {border, bg} = options.colors;
+// console.log(bg);
+
+// options.makeTest();
+
+// console.log(options.name);
+
+// delete options.name;
+
+// console.log(options);
+
+// console.log(Object.keys(options).length)
+// for (let key in options) {
+//     if (typeof options[key] === 'object') {
+//         for (let i in options[key]) {
+//             console.log(`property ${i} has the following value: ${options[key][i]} `)
+//         }
+//     } else {
+//     console.log(`property ${key} has the following value: ${options[key]} `)
+//     }
+// }
+
+// let numberOfFilms;
+//
+// function start() {
+//     // numberOfFilms = +prompt("How many movies have you watched so far?",'');
+//
+//     while (numberOfFilms == '' || numberOfFilms == null || isNaN(numberOfFilms)) {
+//         numberOfFilms = +prompt("How many movies have you watched so far?",'');
+//     }
+// }
+//
+// start();
+//
+// let personalMovieDB = {
+//     count: numberOfFilms,
+//     movies: {},
+//     actors: {},
+//     genres: [],
+//     privat: false
+// };
+//
+// function rememberMyFilms() {
+//     let lastMovie, movieRank;
+//     for (let i=0; i < 2; i++){
+//         lastMovie = prompt("Name one of the last movies you've watched?",'').trim();
+//         movieRank = +prompt("How would you rate that movie?",'');
+//         if (lastMovie != '' && lastMovie != null && movieRank != '' && movieRank != null && lastMovie.length < 50){
+//             personalMovieDB.movies[lastMovie] = movieRank;
+//         } else {
+//             console.log('error');
+//             i--; //return 1 cycle back
+//         }
+//     }
+// }
+//
+// rememberMyFilms();
+//
+// function detectPersonalLevel(){
+//     if (numberOfFilms < 10){
+//         alert('you watched a few movies');
+//     } else if ((numberOfFilms>=10) && (numberOfFilms < 30)){
+//         alert('you watched a lot of movies');
+//     } else if (numberOfFilms>=30) {
+//         alert('you are movie-lover');
+//     } else {
+//         alert('Error');
+//     }
+// }
+//
+// detectPersonalLevel();
+//
+// function showMyDB() {
+//     if (personalMovieDB.privat === false) {
+//         console.log(personalMovieDB);
+//     }
+// }
+//
+// showMyDB();
+//
+// function writeYourGenres() {
+//     let genre;
+//     for (let i=1; i<4; i++) {
+//         genre ='';
+//         while (genre === '' || genre == null){
+//             genre = prompt(`what is your favourite genre of films #${i}?`);
+//         }
+//         // personalMovieDB.genres.push(genre);
+//         personalMovieDB.genres[i-1] = genre;
+//     }
+// }
+//
+// writeYourGenres();
+
+
+// function first() {
+//     setTimeout(function (){
+//         console.log(1);
+//     }, 500);
+// }
+//
+// function second() {
+//     console.log(2);
+// }
+//
+// first();
+// second();
+// function learnJS(lang, callback) {
+//     console.log(`I learn ${lang}`);
+//     callback();
+// }
+
+// learnJS('JavaScript', function () {
+//     console.log('I completed this lesson!');
+// });
+
+// function done() {
+//     console.log('I completed this lesson!');
+// }
+// learnJS('JavaScript', done);
+
+
+// Место для первой задачи
+// function calculateVolumeAndArea(side){
+//     let cubeVolume, cubeArea;
+//     if(Number.isInteger(side) && side > 0){
+//         cubeVolume = Math.pow(side,3);
+//         cubeArea = 6*Math.pow(side,2);
+//         // console.log(`Объем куба: ${cubeVolume}, площадь всей поверхности: ${cubeArea}`);
+//         return (`Объем куба: ${cubeVolume}, площадь всей поверхности: ${cubeArea}`);
+//     } else {
+//         // console.log('При вычислении произошла ошибка');
+//         return ('При вычислении произошла ошибка');
+//     }
+// }
+
+// Место для второй задачи
+// function getCoupeNumber(num){
+//     let coupeNum;
+//     if(Number.isInteger(num) && num > 0 && num < 37){
+//         coupeNum = Math.ceil(num/4);
+//         return(coupeNum);
+//     } else if ( num === 0 || num > 36) {
+//         return("Таких мест в вагоне не существует");
+//     } else {
+//         return("Ошибка. Проверьте правильность введенного номера места");
+//     }
+// }
+
+// function getTimeFromMinutes(minTot) {
+//     let hours, minRemainder, answer;
+//     if(Number.isInteger(minTot) && minTot >= 0 && minTot <= 600){
+//         hours = Math.floor(minTot/60);
+//         minRemainder = minTot % 60;
+//         if (hours === 0 || hours >= 5) {
+//             answer = `Это ${hours} часов и ${minRemainder} минут`
+//         } else if (hours === 1){
+//             answer = `Это ${hours} час и ${minRemainder} минут`
+//         } else {
+//             answer = `Это ${hours} часа и ${minRemainder} минут`
+//         }
+//         console.log(answer);
+//     } else {
+//         answer = 'Ошибка, проверьте данные';
+//         console.log(answer);
+//     }
+//     return (answer);
+// }
+
+// getTimeFromMinutes(-150);
+
+// function findMaxNumber() {
+//     if (arguments.length < 4){
+//         console.log(0);
+//         return 0;
+//     }
+//     let max = 0;
+//     for (let i = 0; i < 4; i++){
+//         if (typeof(arguments[i]) != 'number'){
+//             console.log(0);
+//             return 0;
+//         } else if (arguments[i] > max){
+//             max = arguments[i];
+//         }
+//     }
+//     console.log(max);
+//     return max;
+// }
+//
+// findMaxNumber(1, 5, 6.6, 11);
+
+
+// function fib(num) {
+//     let prevOne = 0, prevTwo = 1;
+//     if (num === 1){
+//         console.log("0");
+//         return "0";
+//     } else if (num === 2){
+//         console.log("0 1");
+//         return "0 1";
+//     } else if(num === 0 || typeof(num) != 'number' || !Number.isInteger(num)) {
+//         console.log("");
+//         return "";
+//     } else {
+//         let answer = '0 1', temp;
+//         for (let i = 3; i <= num; i++) {
+//             temp = prevTwo;
+//             prevTwo = prevOne + prevTwo;
+//             prevOne = temp;
+//             answer += ` ${prevTwo}`;
+//         }
+//         console.log(answer);
+//         return answer;
+//     }
+// }
+//
+// fib(4.2);
 
 // console.dir(Number);
 // let str = 'scoop';
