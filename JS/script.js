@@ -343,6 +343,9 @@ let personalMovieDB = {
             // personalMovieDB.genres.push(genre);
             personalMovieDB.genres[i-1] = genre;
         }
+        personalMovieDB.genres.forEach((item,i)=> {
+            console.log(`favorite genre #${i+1} is ${item}`);
+        });
     }
 };
 
